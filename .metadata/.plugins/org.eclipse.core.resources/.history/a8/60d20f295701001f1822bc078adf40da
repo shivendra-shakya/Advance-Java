@@ -1,0 +1,17 @@
+spring.application.name=wallet-service
+server.port=9095
+
+# actuator for circuit breaker
+management.endpoints.web.exposure.include=health
+management.endpoint.health.show-details=always
+management.health.circuitbreakers.enabled=true
+
+
+#properties for circuit breaker
+resilience4j.circuitbreaker.instances.getAccount.register-health-indicator=true
+resilience4j.circuitbreaker.instances.getAccount.failure-rate-threshold=50
+resilience4j.circuitbreaker.instances.getAccount.max-wait-duration-in-half-open-state=60s
+resilience4j.circuitbreaker.instances.getAccount.automatic-transition-from-open-to-half-open-enabled=true
+resilience4j.circuitbreaker.instances.getAccount.event-consumer-buffer-size=10
+resilience4j.circuitbreaker.instances.getAccount.permitted-number-of-calls-in-half-open-state=3
+resilience4j.circuitbreaker.instances.getAccount.minimum-number-of-calls=5
