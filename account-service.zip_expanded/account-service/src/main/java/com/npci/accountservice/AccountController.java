@@ -14,13 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AccountController {
 	
+	
+	
 	@Value("${server.port}")
 	private String port;
 	
-	@Value("${database.username}")
+	@Value("${spring.datasource.username}")
 	private String username;
 	
-	@Value("${database.password}")
+	@Value("${spring.datasource.password}")
 	private String password;
 	
 	@GetMapping(path="/{accountNumber}")
@@ -37,6 +39,12 @@ public class AccountController {
 		map.put("password", password);
 		
 		return ResponseEntity.status(200).body(map);
+	}
+	
+	@GetMapping(path="balance/{acc}")
+	public ResponseEntity<Object> getBalance2(@PathVariable("acc") long accountNumber){
+		
+		return ResponseEntity.status(200).body(null);
 	}
 
 }
