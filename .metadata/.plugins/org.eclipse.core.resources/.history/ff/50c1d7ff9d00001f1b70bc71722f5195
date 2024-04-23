@@ -1,0 +1,6 @@
+#instance id
+spring.application.name=account-service-shivendra
+server.port=9091
+
+eureka.instance.prefer-ip-address=true
+eureka.client.service-url.defaultZone=http://52.66.201.78:8761

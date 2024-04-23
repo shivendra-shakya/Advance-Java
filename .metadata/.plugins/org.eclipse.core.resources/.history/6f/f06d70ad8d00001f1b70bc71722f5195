@@ -1,0 +1,18 @@
+package com.npci.walletservice;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.client.RestTemplate;
+
+public class WalletService {
+	@Autowired
+	private RestTemplate rest;
+	
+	public Wallet getAccountDetails(long accountNumber) {
+		String URL = "http://ACCOUNT-SERVICE/account/" + accountNumber;
+		Account account = rest.getForObject(URL, Account.class);
+		
+		Wallet wallet = new Wallet("MyPay", 500, (500+account.getBalance()), account);
+		
+		return wallet;
+	}
+}

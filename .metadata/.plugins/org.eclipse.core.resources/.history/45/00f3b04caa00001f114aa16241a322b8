@@ -1,0 +1,4 @@
+spring.application.name=configuration-server
+server.port=8888
+spring.cloud.server.git.url=https://github.com/Kishor-C/spring-cloud-config.git
+spring.cloud.config.server.get.default-label=master

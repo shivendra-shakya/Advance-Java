@@ -1,0 +1,3 @@
+#instance id
+spring.application.name=account-service
+server.port=9091

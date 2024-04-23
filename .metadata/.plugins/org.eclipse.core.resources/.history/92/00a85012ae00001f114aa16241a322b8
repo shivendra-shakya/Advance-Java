@@ -1,0 +1,11 @@
+#instance id
+spring.application.name=account-service
+server.port=9091
+
+#eureka.instance.prefer-ip-address=true
+#eureka.client.service-url.defaultZone=http://52.66.201.78:8761/eureka
+
+
+#connecting to configuration server
+spring.config.import=optional:configserver://localhost:8888
+spring.profiles.active=dev
