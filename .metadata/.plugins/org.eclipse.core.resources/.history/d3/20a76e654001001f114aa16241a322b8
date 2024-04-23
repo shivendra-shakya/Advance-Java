@@ -8,4 +8,4 @@ server.port=9091
 
 #connecting to configuration server
 spring.config.import=optional:configserver:http://localhost:8888
-spring.profiles.active=dev
+spring.profiles.active=prod
