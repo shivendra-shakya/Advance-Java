@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Getting the data from backend </h1>
+    <input type="text" id="a">
+    <button onclick="getUser3()">Fetch</button>
+    <div id="b"></div>
+
+    <script type="text/javascript">
+        function getUser(){
+            // 1st approach : XMLHttprequest
+            // creating XMLHTTPRequest object
+            let xhr = new XMLHttpRequest();
+            let userId = document.getElementById('a').value;
+            let URL = `https://jsonplaceholder.typicode.com/users/${userId}`;
+            
+            xhr.open('GET', URL); // ready state = 1
+            xhr.send(); // ready state = 2
+            xhr.onreadystatechange =() => {
+                if(xhr.readyState==4){
+                    // responseText is the property that stores data
+                    document.getElementById('b').innerHTML=xhr.responseText;
+                }
+            }
+        }
+
+
+        function getUser2(){
+            let userId = document.getElementById('a').value;
+            let URL = `https://jsonplaceholder.typicode.com/users/${userId}`;
+            
+            // fetch() return a promise to resolve the response 
+            fetch(URL).then(response => response.json()).then(json => document.getElementById('b').innerHTML=json.username +' '+ json.email);
+            
+            // fetch() performs asynchronous operation 
+            fetch(URL).then(response => console.log('inside call back'));
+            console.log('outside callback')
+        }
+
+        async function getUser3(){
+            let userId = document.getElementById('a').value;
+            let URL = `https://jsonplaceholder.typicode.com/users/${userId}`;
+
+            let res = await  fetch(URL); // until promise is resolved or rejected
+            let js = await res.json(); // wait until promise is resolved or rejected here response body is return
+
+            document.getElementById('b').innerHTML=`<p> userid : ${js.id} , name : ${js.username}</p> `
+        }
+    </script>
+</body>
+</html>

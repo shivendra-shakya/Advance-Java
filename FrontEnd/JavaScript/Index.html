@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Learning JS For React</h1>
+
+    <button onclick="increment()">+</button>
+    <button onclick="decrement()">-</button>
+
+    <div id="a"></div>
+
+    <script type="text/javascript" src="main.js">
+
+
+    </script>
+    <script type="text/javascript" >
+       let username= 'Kishor';
+       let age = 35;
+       let emailId = 'kishor@gmail.com'
+
+       document.write('<p> Name = ' + username + ', Age = ' + age + ', Email = ' + emailId +'</p>');
+
+       document.write(`<p> Name = ${username} , age = ${age} , email = ${emailId} </p>`);
+
+
+       //class in js
+       class Employee{
+
+        constructor(id, name, salary){
+            this.id= id;
+            this.name= name;
+            this.salary= salary;
+        }
+
+        display(){
+            document.write(`<p> Id = ${this.id} , Name = ${this.name} , Salary = ${this.salary}`)
+        }
+
+        
+       }
+
+
+       let emp1= new Employee(200, 'Rajat', 4545);
+       let emp2 = new Employee(400, 'Shiv', 6767);
+       emp1.display();
+       emp2.display();
+
+
+
+       let emp3 = {id:577 , name:'Sid', salary:8787, print : function(){
+        document.write(`<p> ID = ${this.id}, Name = ${this.name} , Salary = ${this.salary}`)
+       }}
+
+       emp3.print();
+
+       //arrays in js 
+       let items= [1,2,3,4,5];
+
+       //iterating in multiple ways 
+
+       // for, foreach, map function
+
+       for(let i=0 ; i<items.length ; i++){
+        document.write(`<p> items at ${i} = ${items[i]} </p>`)
+       }
+
+        // using forEach(callBackFn) : callBackFn(item, index)
+        // callback executed for each iterartion by passing iterarted element and index function(){} this is callback
+        items.forEach( function(item, index){
+            document.write(`<p> Item = ${item} is at ${index} </p>`)
+        }); 
+
+        //map also takes callback func and in map we have to return a new array
+        let anotherItems = items.map(function(item, index){
+            return item + (item*0.1);
+        });
+        // new array generated with 10% increament 
+        anotherItems.forEach( function(item, index){
+            document.write(`<p> Another Item = ${item} is at ${index} </p>`)
+        });
+
+        // arrow function 
+
+        let someMoreItems = items.map( (value, index) => value+10 );
+        someMoreItems.forEach( (item, index) => document.write(`<p> Arrow fn : ${item} at ${index} </p>`) );
+
+
+        // String Padding
+        document.write(`<p> ---------String padding------- </p>`);
+
+        let random = Math.ceil(Math.random()*10000); // random 0 to 1 
+        document.write(`<p> Random number = ${random}`);
+        
+        // result always 4 digit if not fill 0
+        let otp4digit = random.toString().padStart(4,'0');
+        document.write(`<p> otp 4 digit = ${otp4digit}`);
+        let otp6digit = random.toString().padEnd(6, '0');
+        document.write(`<p> Otp 6 digit = ${otp6digit}`);
+
+
+        // Optional Chain
+        let usersArray = [
+            {id:100, name:'Rajat', addres:{state:'KJ', city:'MNp'}},
+            {id:100, name:'abc'},
+            {id:100, name:'XYZ', addres:{state:'GJ', city:'hjhj'}}
+        ];
+
+        usersArray.forEach(
+            (item, index) => document.write(`<p> Name = ${item.name}, Address = ${item.addres?.state} </p>`)
+        );
+
+        // ternary operator item.address?.state!='undefined' ? item.address?.state : 'NOt found' 
+        usersArray.forEach(
+            (item, index) => document.write(`<p> Name = ${item.name}, Address = ${item.addres?.state != undefined ? item.addres?.state : 'Not found'} </p>`)
+        );
+
+    </script>
+</body>
+</html>

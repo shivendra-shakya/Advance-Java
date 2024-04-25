@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- root node where all components are loaded-->
+    <div id="root"></div> 
+
+    <!-- we need 3 libraries-->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- we are going to use jsx hence use text/babel -->
+    <script type="text/babel">
+        //you can create many component but inside root node
+        // craeting root component , name must start with uppercase
+        function App(){
+            return (<div> 
+                <h1>This is root components</h1>
+                <Hello/>
+            </div>)
+        }
+        // another component 
+        function Hello(){
+            return(<div>
+                <h1>This is hello component</h1>
+                </div>)
+        }
+        // adding rooot component to root node 
+        // first specify the root node using ReactDom.createRoot
+
+        let root = ReactDOM.createRoot(document.getElementById('root'));
+
+        // above keeps all component inside virtual DOM
+        // render component to the real DOM using root.render(app)
+
+        root.render(<App></App>)
+    </script>
+</body>
+</html>
